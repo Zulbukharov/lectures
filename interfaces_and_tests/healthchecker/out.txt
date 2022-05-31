@@ -1,0 +1,12 @@
+mode: atomic
+healthchecker/check_website.go:5.36,7.16 2 2
+healthchecker/check_website.go:11.2,11.42 1 1
+healthchecker/check_website.go:15.2,15.13 1 1
+healthchecker/check_website.go:7.16,9.3 1 1
+healthchecker/check_website.go:11.42,13.3 1 0
+healthchecker/check_websites.go:10.76,15.27 3 1
+healthchecker/check_websites.go:21.2,21.33 1 1
+healthchecker/check_websites.go:26.2,26.16 1 1
+healthchecker/check_websites.go:15.27,16.28 1 2
+healthchecker/check_websites.go:16.28,18.4 1 2
+healthchecker/check_websites.go:21.33,24.3 2 2

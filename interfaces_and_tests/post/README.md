@@ -1,0 +1,1 @@
+minimock -i post/internal/app.Repository -o ./internal/repository/repository_mock.go
