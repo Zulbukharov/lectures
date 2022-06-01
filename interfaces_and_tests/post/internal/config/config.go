@@ -13,7 +13,7 @@ type Settings struct {
 	PostgresHost     string `yaml:"postgres_host"`
 	PostgresPort     string `yaml:"postgres_port"`
 	PostgresDBName   string `yaml:"postgres_db_name"`
-	ServerHTTPPort   string `yaml:"server_http_port"`
+	// ServerHTTPPort   string `yaml:"server_http_port"`
 }
 
 // ParseYAML parses given yaml file and returns Settings instance

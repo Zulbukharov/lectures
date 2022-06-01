@@ -13,12 +13,12 @@ var (
 
 // Service provides Post adding operations.
 type Service interface {
-	AddPost(models.Post) error
+	AddPost(models.PostInsert) error
 }
 
 // Repository provides access to Post repository.
 type Repository interface {
-	Put(models.Post) error
+	Put(*models.PostInsert) error
 }
 
 type service struct {
@@ -31,11 +31,11 @@ func New(r Repository) Service {
 }
 
 // AddPost adds the given Post to the database
-func (s *service) AddPost(u models.Post) error {
+func (s *service) AddPost(u models.PostInsert) error {
 	if u.AuthorID == 0 || u.Content == "" {
 		return ErrInvalidInput
 	}
-	err := s.tR.Put(u)
+	err := s.tR.Put(&u)
 	if errors.Is(err, repository.ErrFailedToAdd) {
 		return ErrFailedToAdd
 	}

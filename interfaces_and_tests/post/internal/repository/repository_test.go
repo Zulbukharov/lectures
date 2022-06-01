@@ -13,7 +13,7 @@ func TestPutPost(t *testing.T) {
 	tests := []struct {
 		desc        string
 		mockClosure func(mock sqlmock.Sqlmock)
-		args        models.Post
+		args        models.PostInsert
 		expected    error
 	}{
 		{
@@ -24,7 +24,7 @@ func TestPutPost(t *testing.T) {
 					WithArgs("hello", 1).
 					WillReturnResult(sqlmock.NewResult(1, 1))
 			},
-			args:     models.Post{AuthorID: 1, Content: "hello"},
+			args:     models.PostInsert{AuthorID: 1, Content: "hello"},
 			expected: nil,
 		},
 		{
@@ -35,7 +35,7 @@ func TestPutPost(t *testing.T) {
 					WithArgs("hello", 1).
 					WillReturnError(repository.ErrFailedToAdd)
 			},
-			args:     models.Post{AuthorID: 1, Content: "hello"},
+			args:     models.PostInsert{AuthorID: 1, Content: "hello"},
 			expected: repository.ErrFailedToAdd,
 		},
 		{
@@ -43,7 +43,7 @@ func TestPutPost(t *testing.T) {
 			mockClosure: func(mock sqlmock.Sqlmock) {
 				mock.ExpectPrepare("INSERT INTO posts").WillReturnError(errors.New("hey"))
 			},
-			args:     models.Post{AuthorID: 1, Content: "hello"},
+			args:     models.PostInsert{AuthorID: 1, Content: "hello"},
 			expected: repository.ErrFailedToPrepare,
 		},
 	}

@@ -12,7 +12,7 @@ type Post struct {
 	AuthorID uint
 }
 
-func (s *repository) Put(u *models.Post) error {
+func (s *repository) Put(u *models.PostInsert) error {
 	stmt, err := s.db.Prepare("INSERT INTO posts (content, author_id) VALUES($1, $2);")
 	if err != nil {
 		log.Printf("db.Prepare: %v", err)

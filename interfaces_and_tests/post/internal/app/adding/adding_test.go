@@ -5,6 +5,7 @@ import (
 	"post/internal/app/adding"
 	"post/internal/models"
 	"post/internal/repository"
+
 	"post/internal/repository/mock"
 	"testing"
 
@@ -15,7 +16,7 @@ func TestAddPost(t *testing.T) {
 	tests := []struct {
 		desc        string
 		mockClosure func(*mock.RepositoryMock)
-		args        models.Post
+		args        models.PostInsert
 		expected    error
 	}{
 		{
@@ -23,7 +24,7 @@ func TestAddPost(t *testing.T) {
 			mockClosure: func(rm *mock.RepositoryMock) {
 				rm.PutMock.Return(nil)
 			},
-			args:     models.Post{AuthorID: 1, Content: "hello"},
+			args:     models.PostInsert{AuthorID: 1, Content: "hello"},
 			expected: nil,
 		},
 		{
@@ -31,7 +32,7 @@ func TestAddPost(t *testing.T) {
 			mockClosure: func(rm *mock.RepositoryMock) {
 				rm.PutMock.Return(repository.ErrFailedToAdd)
 			},
-			args:     models.Post{AuthorID: 1, Content: "hello"},
+			args:     models.PostInsert{AuthorID: 1, Content: "hello"},
 			expected: adding.ErrFailedToAdd,
 		},
 		{
@@ -39,7 +40,7 @@ func TestAddPost(t *testing.T) {
 			mockClosure: func(rm *mock.RepositoryMock) {
 
 			},
-			args:     models.Post{AuthorID: 0, Content: "hello"},
+			args:     models.PostInsert{AuthorID: 0, Content: "hello"},
 			expected: adding.ErrInvalidInput,
 		},
 	}
