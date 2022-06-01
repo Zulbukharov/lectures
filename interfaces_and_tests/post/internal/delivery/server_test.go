@@ -1,3 +1,6 @@
+//go:build unit || all
+// +build unit all
+
 package delivery_test
 
 import (

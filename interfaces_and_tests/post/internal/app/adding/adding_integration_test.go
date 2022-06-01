@@ -1,3 +1,6 @@
+//go:build integration || all
+// +build integration all
+
 package adding_test
 
 import (
