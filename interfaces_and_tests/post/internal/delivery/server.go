@@ -57,7 +57,7 @@ func (s *Server) AddPost(w http.ResponseWriter, r *http.Request) (interface{}, i
 	if err := decoder.Decode(&post); err != nil {
 		return res, http.StatusBadRequest, errors.New("failed to parse post")
 	}
-	err := s.adder.AddPost(models.PostInsert{AuthorID: 1, Content: "hello"})
+	err := s.adder.AddPost(post)
 	if err != nil {
 		return res, http.StatusBadRequest, errors.New("failed to parse post")
 	}

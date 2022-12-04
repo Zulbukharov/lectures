@@ -8,10 +8,12 @@ import (
 type SpySearcher struct {
 	phone           string
 	searchWasCalled bool
+	chain           []string
 }
 
 func (ss *SpySearcher) Search(people []*search.Person, firstName, lastName string) *search.Person {
 	ss.searchWasCalled = true
+	ss.chain = append(ss.chain, "Search")
 	return &search.Person{
 		FirstName: firstName,
 		LastName:  lastName,

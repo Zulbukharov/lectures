@@ -36,3 +36,5 @@ func (p *PhoneBook) Find(searcher Searcher, firstName, lastName string) (string,
 
 	return person.Phone, nil
 }
+
+func (p *PhoneBook) Hello() {}
